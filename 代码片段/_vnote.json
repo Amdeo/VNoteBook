@@ -8,6 +8,9 @@
         },
         {
             "name": "Python"
+        },
+        {
+            "name": "C"
         }
     ],
     "version": "1"
