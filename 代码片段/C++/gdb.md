@@ -156,6 +156,8 @@ info display
 ## 打印内部变量
 ```
 (gdb) print
+# 打印动态内存的值
+(gdb) p *array@len
 ```
 
 ## 继续执行
@@ -165,10 +167,44 @@ info display
 
 ## 修改变量的值
 ```
-(gdb) set var = value
+(gdb) set variable <变量>=<表达式>
 ```
 
 ## 显示变量的数据类型
 ```
 (gdb) whatis + 变量
+```
+
+## 显示栈帧
+```
+(gdb) bt
+
+# 不仅显示backtrace，还显示局部变量
+(gdb) bt full 
+# 显示开头N个栈帧
+(gdb) bt N
+
+(gdb) bt full N
+```
+
+## 显示寄存器
+```
+(gdb) info reg
+
+# 使用print 打印寄存器的内容
+(gdb) p $寄存器 # p $pc
+# 十六进制显示寄存器内容。
+(gdb) p/x $寄存器
+
+(gdb) x $寄存器 # 显示程序指针内容
+
+(gdb) x/i $寄存器 # 显示程序指针汇编。
+
+(gdb) x/10i $寄存器 # 显示程序指针之后10条指令。
+```
+
+## 生成coredump文件
+```
+(gdb) generate-core-file
+
 ```
