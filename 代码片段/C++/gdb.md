@@ -206,5 +206,4 @@ info display
 ## 生成coredump文件
 ```
 (gdb) generate-core-file
-
 ```

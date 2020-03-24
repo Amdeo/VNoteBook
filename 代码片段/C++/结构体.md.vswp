@@ -1,0 +1,167 @@
+vnote_backup_file_826537664 /Users/amdeo/Nutstore Files/我的坚果云/code/VNoteBook/代码片段/C++/结构体.md
+# 结构体
+## 定义结构体 (定义一个类型)
+```C++
+//只定义一个结构体
+struct stu{
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在学习小组
+    float score;  //成绩
+};
+
+//创建结构体，并定义两个变量
+struct stu{
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在学习小组
+    float score;  //成绩
+} var1，var2；
+
+//创建一次性结构体,这个结构体只有var1这一个变量
+struct {
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在学习小组
+    float score;  //成绩
+} var1;
+
+//为结构体取别名
+typedef struct stu{
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在学习小组
+    float score;  //成绩
+} STUDENGT;
+
+```
+创建结构体变量
+```
+//下面两种方法都可以
+struct stu var1，var2；
+stu var3，var4；
+
+```
+## 结构体数组
+定义结构体数组
+```C++
+struct stu{
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在小组 
+    float score;  //成绩
+}class[5];
+```
+
+定义结构体数组，并初始化
+```C++
+struct stu{
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在小组 
+    float score;  //成绩
+}class[5] = {
+    {"Li ping", 5, 18, 'C', 145.0},
+    {"Zhang ping", 4, 19, 'A', 130.5},
+    {"He fang", 1, 18, 'A', 148.5},
+    {"Cheng ling", 2, 17, 'F', 139.0},
+    {"Wang ming", 3, 17, 'B', 144.5}
+};
+
+```
+
+## 结构体指针
+```
+struct stu{
+    char *name;  //姓名
+    int num;  //学号
+    int age;  //年龄
+    char group;  //所在学习小组
+    float score;  //成绩
+} *pstu;
+
+```
+
+# 枚举
+定义枚举
+
+```C++
+enum week{ Mon, Tues, Wed, Thurs, Fri, Sat, Sun }; 
+
+enum week{ Mon = 1, Tues = 2, Wed = 3, Thurs = 4, Fri = 5, Sat = 6, Sun = 7 };
+
+enum week{ Mon = 1, Tues, Wed, Thurs, Fri, Sat, Sun };
+
+enum { Mon, Tues, Wed, Thurs, Fri, Sat, Sun }; 
+```
+
+```C++
+#include <stdio.h>
+int main(){
+    enum week{ Mon = 1, Tues, Wed, Thurs, Fri, Sat, Sun } day;
+    scanf("%d", &day); //day 的赋值只能是枚举值中一种
+    //day = 1 这样赋值是不行的
+    //day = (week)1 这样是可以
+    //day = Mon 这样是正确的赋值
+    switch(day){
+        case Mon: puts("Monday"); break;
+        case Tues: puts("Tuesday"); break;
+        case Wed: puts("Wednesday"); break;
+        case Thurs: puts("Thursday"); break;
+        case Fri: puts("Friday"); break;
+        case Sat: puts("Saturday"); break;
+        case Sun: puts("Sunday"); break;
+        default: puts("Error!");
+    }
+    return 0;
+}
+```
+
+# 共用体
+```
+union 共用体名{
+    成员列表 //公用同一段内存
+};
+```
+共用体的定义
+```C++
+union data{
+    int n;
+    char ch;
+    double f;
+};
+union data a, b, c;
+```
+判断大小端
+```C++
+#include <stdio.h>
+int main(){
+    union{
+        int n;
+        char ch;
+    } data;
+    data.n = 0x00000001;  //也可以直接写作 data.n = 1;
+    if(data.ch == 1){
+        printf("Little-endian\n");
+    }else{
+        printf("Big-endian\n");
+    }
+    return 0;
+}
+```
+
+位域
+`在结构体定义时，我们可以指定某个成员变量所占用的二进制位数（Bit），这就是位域。`
+```C++
+struct bs{
+    unsigned m;
+    unsigned n: 4;
+    unsigned char ch: 6;
+};
+```
