@@ -8,6 +8,9 @@
         },
         {
             "name": "Python"
+        },
+        {
+            "name": "shell"
         }
     ],
     "version": "1"
