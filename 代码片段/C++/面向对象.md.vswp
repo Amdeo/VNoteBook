@@ -1,3 +1,4 @@
+vnote_backup_file_826537664 G:/jianguo/我的坚果云/code/笔记/VNoteBook/代码片段/C++/面向对象.md
 # 面向对象
 ## 类
 定义一个类
@@ -152,11 +153,3 @@ private:
 ## const对象
 `被const修饰的对象们，只能调用类的const成员（包括const成员变量和const成员函数）`
 
-## lambda表达式
-`没有名字的函数`
-
-```
-[=](int x, int y) -> bool { return x%10 < y%10; }
-
-[&](int & x) { total += x; x *= 2; }
-```
