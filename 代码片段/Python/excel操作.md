@@ -3,7 +3,3 @@
 ```
 pip install pypiwin32
 ```
-
-```python
-
-```

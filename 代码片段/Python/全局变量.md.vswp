@@ -1,0 +1,3 @@
+vnote_backup_file_826537664 E:/JianGuoYun/我的坚果云/code/笔记/VNoteBook/代码片段/Python/全局变量.md
+# 全局变量
+python的全局变量，只能在同一个文件中引用，跨文件就不行了
