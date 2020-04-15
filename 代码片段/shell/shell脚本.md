@@ -45,7 +45,7 @@ read
 
 ```
   #! /bin/bash
-  
+
   read -p "Enter some information >" name url age
   echo "网站名字: $name"
   echo "网址：$url"
@@ -54,8 +54,50 @@ read
 注意，必须在一行内输入所有的值，不能换行，否则只能给第一个变量赋值，后续变量都会赋值失败。
 `每个输入之间需用空格`
 
+## 如何运行shell脚本
+`交互式`：在Shell中一个个地输入命令并及时查看它们的输出结果，整个过程都在在跟Shell不停地互动
+`非交互式`：让所有命令批量化、一次性地执行,使用shell就是非交互式
+`登入式`：需要使用用户名和密码登入后，才可以使用shell
+`非登入式`：不需要登入直接使用shell
 
+Shell一共有四种运行方式：
+- 交互式的登入的Shell
+- 交互式的非登入Shell
+- 非交互式的登入Shell
+- 非交互式的非登入Shell
 
+### 判断shell是否式交互式
+```
+echo $-
+# 输出的值中包含i,表示交互式
+```
+输出
+```
+himBH
+```
+
+我们在shell脚本中在执行下这个命令
+```
+#!/bin/bash
+
+echo $-
+```
+输出
+```
+hB
+```
+
+## 判断shell是否为登入式
+在命令行中输入：
+```
+shopt login_shell
+```
+输出
+```
+login_shell    on    登入shi
+
+login_shell    off  非登入式
+```
 
 
 
