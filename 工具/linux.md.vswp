@@ -1,0 +1,16 @@
+vnote_backup_file_826537664 /Users/amdeo/Nutstore Files/我的坚果云/code/笔记/VNoteBook/工具/linux.md
+# linux
+## 解压
+解压tar.gz
+```
+tar -zxvf java.tar.gz
+```
+解压gz
+```
+gzip -b java.gz
+```
+
+解压zip
+```
+unzip xx.zip
+```

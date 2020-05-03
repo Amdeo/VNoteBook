@@ -1,0 +1,53 @@
+vnote_backup_file_826537664 G:/jianguo/我的坚果云/code/笔记/VNoteBook/代码片段/shell/字符串.md
+# 字符串
+定义字符串
+```
+str1=c.biancheng.net  #这种方式定义的字符串不能有空格，否则空格后边的字符串会作为其他变量或者命令解析
+str2="shell script"
+str3='C语言中文网'
+```
+
+```
+#!/bin/bash
+n=74
+str1=c.biancheng.net$n str2="shell \"script\" $n"
+str3='C语言中文网 $n'
+echo $str1
+echo $str2
+echo $str3
+echo "str1字符串的长度为${#str1}"
+```
+
+获取字符串的长度
+```
+${#string_name}
+```
+
+字符串的拼接
+```
+#!/bin/bash
+name="Shell"
+url="http://c.biancheng.net/shell/"
+str1=$name$url  #中间不能有空格
+str2="$name $url"  #如果被双引号包围，那么中间可以有空格
+str3=$name": "$url  #中间可以出现别的字符串
+str4="$name: $url"  #这样写也可以
+str5="${name}Script: ${url}index.html"  #这个时候需要给变量名加上大括号
+echo $str1
+echo $str2
+echo $str3
+echo $str4
+echo $str5
+```
+`{}`可以帮助解释器识别变量的边界
+
+字符串的截取
+```
+${string: start :length}
+```
+
+从字符串左边开始计数
+```
+url="c.biancheng.net"
+echo ${url: 2: 9}
+```

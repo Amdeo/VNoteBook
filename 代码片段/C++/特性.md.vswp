@@ -79,5 +79,62 @@ C++代码在编译会根据参数列表对函数进行重命名，例如`void Sw
 ![](_v_images/20200405224655179_24698.png)
 
 
+## explicit
+`禁止单参数构造函数被隐式转换`
+```
+#include <iostream>
 
+using namespace std;
 
+class A
+{
+public:
+    A()  {}
+    A(int a) {}
+    A(char a,int b = 1) {}
+    A(int a, char b) {}
+    A(int a, int b, int c = 2) {}
+    ~A() {}
+};
+
+int main()
+{
+    A a;   //无参构造函数
+    A b(1); //调用A(int a) {}
+    A c = 1; //调用A(int a) {},C++编译器针对只有一个参数的构造函数，会隐式类型转换,通过右值类型直接调用参数类型相同（排除默认参数的构造函数也是符合的）的构造函数
+    A d(1, 2); //A(int a, int b, int c = 2) {}
+    A e = 'A'; // A(char a,int b = 1) {} 这里也是隐式类型转化
+    return 0;
+
+}
+```
+针对隐式类型转化，我们可以通过关键字explicit修饰构造函数，这样定义类变量时，只能显示的调用构造函数才能定义变量，
+*例如*：explicit A(char a,int b = 1)；
+
+## const
+
+const修饰的成员变量，只能通过列表初始化
+```
+#include <iostream>
+
+using namespace std;
+
+class demo
+{
+public:
+    demo(int a,int b): b(b) //成员变量b只能这样赋值
+    {
+        this->a = a;
+}
+
+    int a;
+    const int b;
+};
+int main()
+{
+    demo A(1,2);
+    cout << A.a << endl;
+    cout << A.b << endl;
+    return 0;
+}
+```
